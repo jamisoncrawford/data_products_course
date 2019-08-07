@@ -1,0 +1,135 @@
+---
+title: "My First Presentation"
+author: "Jamison R. Crawford, MPA"
+date: "8/7/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## My New Slide
+
+Slide with title...
+
+Other content...
+
+***
+### Slide without Title
+
+## Slide with Subheadings
+
+### Unordered Lists
+
+* Unordered Item 1
+* Unordered Item 2
+* Unordered Item 3
+
+### Ordered Lists
+
+1. Ordered Item 1
+2. Ordered Item 2
+3. Ordered Item 3
+
+## Formatted Text
+
+Here are some *words in italics*.
+
+Here are some **words in bold**.
+
+<br>
+
+This should be spaced with `<br>`. 
+
+Cool, you can name variables with backticks, e.g. `mtcars$mpg`.
+
+## Code Chunk Example I
+
+No echo:
+
+```{r}
+print(mtcars)
+```
+
+## Code Chunk Example II
+
+With echo:
+
+```{r}
+print(mtcars, echo=TRUE)
+```
+
+## Code Chunk Example III
+
+Without preceding `##`:
+
+```{r, comment=""}
+mtcars
+```
+
+## Code Chunk Example IV
+
+*Without* evaluation:
+
+```{r eval=FALSE, echo=TRUE}
+mean(mtcars$mpg)
+```
+
+*With* evaluation:
+
+```{r, echo=TRUE}
+mean(mtcars$mpg)
+```
+
+*With* evaluation but no preceding comment `##`:
+
+```{r, echo=TRUE, comment=""}
+mean(mtcars$mpg)
+```
+
+## A Visualization
+
+```{r echo=FALSE, message=FALSE}
+if(!require(ggplot2)){install.packages("ggplot2")}
+if(!require(scales)){install.packages("scales")}
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(scales))
+```
+
+```{r, fig.align='center'}
+ggplot(diamonds, aes(x = carat, y = price, color = price)) +
+  geom_point(alpha = 0.1) +
+  theme_minimal() +
+  labs(title = "Diamonds by carat, price",
+       x = "Carat",
+       y = "Price (USD)", 
+       caption = "Source: Diamonds Dataset, Package 'ggplot2'") +
+  scale_x_continuous(labels = number) +
+  scale_y_continuous(labels = dollar)
+```
+
+## R Markdown
+
+This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+## Slide with Plot
+
+```{r pressure}
+plot(pressure)
+```
+
